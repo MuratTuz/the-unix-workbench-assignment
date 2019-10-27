@@ -2,7 +2,6 @@
 #File: guessinggame.sh
 
 echo "Guess how many files there are in the current directory, add your guess then press Enter:" 
-guess
 
 function guess {
 
@@ -26,6 +25,8 @@ do
         fi
 done
 }
+
+guess
 
 echo "End of program" 
 
