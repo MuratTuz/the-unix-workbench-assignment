@@ -7,7 +7,7 @@ function guess {
 
 read response
 
-filenumber=$(ls -l | egrep -o ^-* | wc -l) 
+filenumber=$(ls -al | grep '^-' | wc -l) 
 
 if [[ $response -eq $filenumber ]]
 then 
@@ -15,14 +15,19 @@ then
 fi
 while [[ $response -ne $filenumber ]]
 do
-        if [[ $response -lt $filenumber ]] 
+	if [[ $response != [[:digit:]] ]]
+	then
+	echo "You did not enter a number, please add your guess number and try again"
+        guess
+	elif [[ $response -lt $filenumber ]] 
         then 
                 echo "The number $response you have entered is too low, try again and press Enter:" 
                 guess
-                else
+        else
                 echo "The number $response you have entered is too high, try again and press Enter:"
                 guess
-        fi
+	fi
+	
 done
 }
 
